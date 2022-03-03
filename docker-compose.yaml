@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: blinkdeploys
       POSTGRES_DB: blink_deploys_db
-      POSTGRES_PASS: 0e823ff$$7673a45c
+      POSTGRES_PASSWORD: 0e823ff$$7673a45c
     # physical location where data will be stored
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./app:/app
     # run this command to start the server
-    command: python manager.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
     # dependencies 
     depends_on:
       # service defined above
