@@ -1,0 +1,33 @@
+version: "3"
+# services to provision
+services:
+  # database to use: PostgreSQL
+  db:
+    # image to provision from DockerHub
+    image: postgres
+    # postgres parameters
+    environment:
+      POSTGRES_USER: blinkdeploys
+      POSTGRES_DB: blink_deploys_db
+      POSTGRES_PASS: 0e823ff$7673a45c
+    # physical location where data will be stored
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  # default folder to run the Django server from 
+  app:
+    build:
+      context: .
+    # expose port 8000 on Docker to be mapped to the hosts port 8000
+    ports:
+      - "8000:8000"
+    # mount the Docker folder as well Host:Docker
+    volumes:
+      - ./app:/app
+    # run this command to start the server
+    command: python manager.py runserver 0.0.0.0:8000
+    # dependencies 
+    depends_on:
+      # service defined above
+      - db
+volumes:
+  pgdata:
