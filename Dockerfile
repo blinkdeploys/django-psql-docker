@@ -17,4 +17,5 @@ WORKDIR /app
 COPY ./app /app
 
 # install required packages
+RUN /usr/local/bin/python -m pip install --upgrade pip
 RUN pip install -r requirements.txt

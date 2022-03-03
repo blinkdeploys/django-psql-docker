@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: blinkdeploys
       POSTGRES_DB: blink_deploys_db
-      POSTGRES_PASS: 0e823ff$7673a45c
+      POSTGRES_PASS: 0e823ff$$7673a45c
     # physical location where data will be stored
     volumes:
       - pgdata:/var/lib/postgresql/data
